@@ -1,20 +1,43 @@
 <template>
   <div>
-    <Nuxt />
+
+    <appHeader class="app-header"/>
+
+    <div class="main-layout">
+      <appTitle
+        class="app-title"
+      />
+      <appSidebar
+        class="app-sidebar"
+      />
+      <div class="app-body">
+        <Nuxt/>
+      </div>
+    </div>
+
   </div>
 </template>
 
-<style>
+<script>
+import text_item from "~/components/atoms/text_item";
+import appHeader from "~/components/appHeader";
+import appTitle from "~/components/appTitle";
+import appSidebar from "~/components/appSidebar";
+
+export default {
+  components: {
+    appHeader,
+    appTitle,
+    text_item,
+    appSidebar
+  },
+  async mounted() {
+  },
+}
+</script>
+
+<style lang="scss">
 html {
-  font-family:
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
@@ -22,6 +45,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+  font-family: 'PT Sans', sans-serif;
 }
 
 *,
@@ -31,32 +55,43 @@ html {
   margin: 0;
 }
 
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
+.main-layout {
+  display: grid;
+  padding: 0 6.11vw; /* 88px от 1440px = 6.11%  */
+  grid-template-columns: minmax(11vw, 161px) 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+      "app_title app_title"
+      "app_sidebar app_body";
 }
 
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 66px;
+  padding: 0 6.11vw; /* 88px от 1440px = 6.11%  */
+//border: 1px solid black;
 }
 
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
+.app-title {
+  grid-area: app_title;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32px 0 24px 0;
+//border: 1px solid black
 }
 
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+.app-sidebar {
+  grid-area: app_sidebar;
+  display: flex;
+  flex-direction: column;
+//margin-top: 25px; //border: 1px solid black
+}
+
+.app-body {
+  grid-area: app_body;
+//margin-top: 25px; //border: 1px solid black
 }
 </style>

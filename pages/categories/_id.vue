@@ -1,0 +1,78 @@
+<template>
+  <div
+    class="category_page"
+  >
+    <!--    Фотографии с сервера приходят квадратные с большой зоной белого, когда в тз вертикальные прямоугольники и почти без фона-->
+    <product_card
+      v-for="product of current_page_arr"
+      :key="product.id"
+      class="product_card"
+      :product="product"
+    />
+  </div>
+</template>
+
+<script>
+import {mapGetters} from 'vuex'
+import product_card from "@/components/organizms/product_card";
+
+export default {
+  async fetch({store, params}) {
+    await store.dispatch('categories/get_categories', params.id)
+    await store.dispatch('products/get_products', params.id)
+    await store.dispatch('products/filter_by', store.getters['modal_filter/active_filter'])
+    await store.dispatch('pagination/paginatedData', {arr: store.getters['products/products'], pageNumber: 0})
+  },
+  components: {product_card},
+  computed: {
+    ...mapGetters('products', ['products']),
+    ...mapGetters('pagination', ['current_page_arr']),
+  }
+}
+</script>
+
+<style scoped>
+.category_page {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 24%);
+  justify-content: space-between;
+  width: 100%;
+//background-color: rgba(0, 0, 0, .1);
+}
+
+.product_card {
+  width: 100%;
+  margin-bottom: 8.6%;
+  cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+  .category_page {
+    grid-template-columns: repeat(auto-fill, 32%);
+  }
+
+  .product_card {
+    margin-bottom: 8.6%;
+  }
+}
+
+@media (max-width: 900px) {
+  .category_page {
+    grid-template-columns: repeat(auto-fill, 48%);
+  }
+
+  .product_card {
+    margin-bottom: 10%;
+  }
+}
+
+@media (max-width: 700px) {
+  .category_page {
+    grid-template-columns: repeat(auto-fill, 100%);
+  }
+
+  .product_card {
+    margin-bottom: 8%;
+  }
+}
+</style>
