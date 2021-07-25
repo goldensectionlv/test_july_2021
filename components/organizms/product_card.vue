@@ -24,6 +24,7 @@
       <product_photo
         style="width: 90%"
         :photo-link="'https://frontend-test.idaproject.com' + product.photo"
+        :alt="product.name"
       />
       <text_item
         product-name

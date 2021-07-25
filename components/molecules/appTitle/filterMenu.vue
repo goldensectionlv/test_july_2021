@@ -1,8 +1,8 @@
 <template>
   <div>
-    <text_item regular-text>
+    <text_item regular-text class="mobileText">
       Сортировать по:
-      <text_item grey-text>
+      <text_item grey-text class="mobileText">
         {{ activeFilter }}
       </text_item>
     </text_item>
@@ -20,6 +20,7 @@
 <script>
 import text_item from "~/components/atoms/text_item";
 import vIcon from "~/components/atoms/vIcon";
+
 export default {
   components: {
     text_item,
@@ -31,6 +32,13 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+.mobileText {
 
+}
+@media (max-width: 380px) {
+  .mobileText {
+  font-size: 14px !important;
+  }
+}
 </style>

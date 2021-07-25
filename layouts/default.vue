@@ -1,7 +1,7 @@
 <template>
   <div>
-
-    <appHeader class="app-header"/>
+    <appHeader class="app-header"
+    />
 
     <div class="main-layout">
       <appTitle
@@ -55,6 +55,15 @@ html {
   margin: 0;
 }
 
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 66px;
+  padding: 0 6.11vw; /* 88px от 1440px = 6.11%  */
+  //border: 1px solid black;
+}
+
 .main-layout {
   display: grid;
   padding: 0 6.11vw; /* 88px от 1440px = 6.11%  */
@@ -65,33 +74,24 @@ html {
       "app_sidebar app_body";
 }
 
-.app-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 66px;
-  padding: 0 6.11vw; /* 88px от 1440px = 6.11%  */
-//border: 1px solid black;
-}
-
 .app-title {
   grid-area: app_title;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 32px 0 24px 0;
-//border: 1px solid black
+  //border: 1px solid black
 }
 
 .app-sidebar {
   grid-area: app_sidebar;
   display: flex;
   flex-direction: column;
-//margin-top: 25px; //border: 1px solid black
+  //margin-top: 25px; //border: 1px solid black
 }
 
 .app-body {
   grid-area: app_body;
-//margin-top: 25px; //border: 1px solid black
+  //margin-top: 25px; //border: 1px solid black
 }
 </style>

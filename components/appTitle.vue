@@ -75,4 +75,6 @@ export default {
     background-color: white;
   }
 }
+
+
 </style>

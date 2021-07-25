@@ -1,13 +1,23 @@
 <template>
-  <div
-    class="category_page"
-  >
-    <!--    Фотографии с сервера приходят квадратные с большой зоной белого, когда в тз вертикальные прямоугольники и почти без фона-->
-    <product_card
-      v-for="product of current_page_arr"
-      :key="product.id"
-      class="product_card"
-      :product="product"
+  <div>
+    <div
+      class="category_page"
+    >
+      <!--    Фотографии с сервера приходят квадратные с большой зоной белого, когда в тз вертикальные прямоугольники и почти без фона-->
+      <product_card
+        v-for="product of current_page_arr"
+        :key="product.id"
+        class="product_card"
+        :product="product"
+      />
+    </div>
+
+    <pagination
+      style="display: flex"
+      :items_array="products"
+      :page-number="pageNumber"
+      :page-count="pageCount"
+      :action="paginatedData"
     />
   </div>
 </template>
@@ -15,6 +25,7 @@
 <script>
 import {mapGetters} from 'vuex'
 import product_card from "@/components/organizms/product_card";
+import pagination from "@/components/molecules/pagination";
 
 export default {
   async fetch({store, params}) {
@@ -23,10 +34,15 @@ export default {
     await store.dispatch('products/filter_by', store.getters['modal_filter/active_filter'])
     await store.dispatch('pagination/paginatedData', {arr: store.getters['products/products'], pageNumber: 0})
   },
-  components: {product_card},
+  components: {product_card, pagination},
   computed: {
     ...mapGetters('products', ['products']),
-    ...mapGetters('pagination', ['current_page_arr']),
+    ...mapGetters('pagination', ['current_page_arr', 'pageCount', 'pageNumber']),
+  },
+  methods: {
+    paginatedData(obj) {
+      this.$store.dispatch('pagination/paginatedData', obj)
+    }
   }
 }
 </script>
