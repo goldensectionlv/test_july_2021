@@ -73,7 +73,7 @@ export default {
   position: fixed;
   display: flex;
   justify-content: flex-end;
-  z-index: 1;
+  z-index: 2;
   background-color: rgba(255, 255, 255, .8);
 
   &__main {
