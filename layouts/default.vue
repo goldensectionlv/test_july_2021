@@ -1,8 +1,9 @@
 <template>
   <div>
+    <basket
+    />
     <appHeader class="app-header"
     />
-
     <div class="main-layout">
       <appTitle
         class="app-title"
@@ -23,16 +24,16 @@ import text_item from "~/components/atoms/text_item";
 import appHeader from "~/components/appHeader";
 import appTitle from "~/components/appTitle";
 import appSidebar from "~/components/appSidebar";
+import basket from "@/components/basket";
 
 export default {
   components: {
     appHeader,
     appTitle,
     text_item,
-    appSidebar
-  },
-  async mounted() {
-  },
+    appSidebar,
+    basket
+  }
 }
 </script>
 

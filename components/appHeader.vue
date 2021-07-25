@@ -10,6 +10,7 @@
       width="24px"
       name="basket"
       style="cursor: pointer"
+      @click.native="$store.dispatch('basket/switchBasket', true)"
     />
 
   </div>
@@ -22,11 +23,9 @@ export default {
   components: {
     text_item,
     vIcon
-
   }
 }
 </script>
 
 <style scoped>
-
 </style>
