@@ -10,17 +10,22 @@
         :on-close="onClose"
       />
       <emptyBasketInfo
-        v-if="!basket_list.length"
+        v-if="!basket_list.length && !isThanksActive"
         margin="24px 0 0 0"
         :on-close="onClose"
       />
       <notEmptyBasketBody
+        v-if="basket_list.length"
         margin="24px 0 0 0"
         :basket-items="basket_list"
         :delete-from-basket="deleteFromBasket"
-        v-else
       />
-      <!--      form component here-->
+      <myForm
+        v-if="basket_list.length"
+      />
+      <thanksForOrder
+        v-if="!basket_list.length && isThanksActive"
+      />
     </div>
 
   </div>
@@ -31,15 +36,19 @@ import {mapGetters} from 'vuex'
 import basketHeader from "@/components/molecules/basket/basketHeader";
 import emptyBasketInfo from "@/components/molecules/basket/emptyBasketInfo";
 import notEmptyBasketBody from "@/components/molecules/basket/notEmptyBasketBody";
+import myForm from "@/components/molecules/basket/myForm";
+import thanksForOrder from "@/components/molecules/basket/thanksForOrder";
 
 export default {
   components: {
     basketHeader,
     emptyBasketInfo,
-    notEmptyBasketBody
+    notEmptyBasketBody,
+    myForm,
+    thanksForOrder
   },
   computed: {
-    ...mapGetters('basket', ['basket_active', 'basket_list'])
+    ...mapGetters('basket', ['basket_active', 'basket_list', 'isThanksActive'])
   },
   methods: {
     onClose() {

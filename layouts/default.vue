@@ -65,7 +65,6 @@ html {
   justify-content: space-between;
   height: 66px;
   padding: 0 6.11vw; /* 88px от 1440px = 6.11%  */
-  //border: 1px solid black;
 }
 
 .main-layout {
@@ -74,28 +73,35 @@ html {
   grid-template-columns: minmax(11vw, 161px) 1fr;
   grid-template-rows: auto 1fr;
   grid-template-areas:
-      "app_title app_title"
-      "app_sidebar app_body";
+      "app-title app-title"
+      "app-sidebar app-body";
 }
 
 .app-title {
-  grid-area: app_title;
+  grid-area: app-title;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 32px 0 24px 0;
-  //border: 1px solid black
 }
 
 .app-sidebar {
-  grid-area: app_sidebar;
+  grid-area: app-sidebar;
   display: flex;
   flex-direction: column;
-  //margin-top: 25px; //border: 1px solid black
 }
 
 .app-body {
-  grid-area: app_body;
-  //margin-top: 25px; //border: 1px solid black
+  grid-area: app-body;
+}
+
+@media (max-width: 500px) {
+  .main-layout {
+    grid-template-rows: minmax(33px, 66px) minmax(33px, auto) 1fr;
+    grid-template-areas:
+      "app-title app-title"
+      "app-sidebar app-sidebar"
+      "app-body app-body";
+  }
 }
 </style>

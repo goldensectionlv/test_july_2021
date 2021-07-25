@@ -5,10 +5,12 @@
       TestList
     </text_item>
 
-    <div class="basket">
-
-      <div class="basket__counter">
-        <span style="margin-top: 1px;">{{ totalBasketQuantity }}</span>
+    <div class="basket"
+         @click="$store.dispatch('basket/switchBasket', true)"
+    >
+      <div class="basket__counter"
+      >
+        <span style="margin-top: 1px">{{ totalBasketQuantity }}</span>
       </div>
 
       <vIcon
@@ -16,7 +18,6 @@
         width="24px"
         name="basket"
         style="cursor: pointer"
-        @click.native="$store.dispatch('basket/switchBasket', true)"
       />
     </div>
 
@@ -49,6 +50,7 @@ export default {
 <style lang="scss" scoped>
 .basket {
   position: relative;
+
   &__counter {
     display: flex;
     align-items: center;

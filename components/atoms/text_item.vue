@@ -11,7 +11,8 @@
     'productPrice': productPrice,
     'basketEmptyText': basketEmptyText,
     'btnText': btnText,
-    'basketOrderHeader': basketOrderHeader
+    'basketOrderHeader': basketOrderHeader,
+    'thanksText': thanksText
     }"
     :style="{
     margin: margin
@@ -65,6 +66,10 @@ export default {
       default: false
     },
     basketOrderHeader: {
+      type: Boolean,
+      default: false
+    },
+    thanksText: {
       type: Boolean,
       default: false
     },
@@ -142,6 +147,7 @@ export default {
   text-align: center;
   color: #FFFFFF;
 }
+
 .basketOrderHeader {
   font-style: normal;
   font-weight: normal;
@@ -149,4 +155,13 @@ export default {
   line-height: 23px;
   color: #59606D;
 }
+
+.thanksText {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 31px;
+  color: black;
+}
+
 </style>

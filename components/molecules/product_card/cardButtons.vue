@@ -9,6 +9,7 @@
       height="14px"
       :color="isInBasketIds.includes(product.id) ? 'black' : '#959DAD'"
       style="cursor: pointer"
+      zoom-big
       @click.native="addToBasket(product)"
     />
   </div>

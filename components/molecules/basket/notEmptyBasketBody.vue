@@ -46,6 +46,7 @@
           width="20px"
           height="22px"
           name="delete"
+          style="cursor: pointer"
           @click.native="deleteFromBasket(index)"
         />
       </div>

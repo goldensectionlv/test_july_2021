@@ -4,6 +4,7 @@
     :style="{margin: margin}"
     :width="width"
     :height="height"
+    :class="{'zoom': zoom, 'zoom-big': zoomBig}"
     viewBox="0 0 5 3"
     fill="none"
     style="user-select: none"
@@ -16,6 +17,7 @@
     :style="{margin: margin}"
     :width="width"
     :height="height"
+    :class="{'zoom': zoom, 'zoom-big': zoomBig}"
     viewBox="0 0 24 27"
     fill="none"
     style="user-select: none"
@@ -36,6 +38,7 @@
     :width="width"
     :height="height"
     :style="{margin: margin}"
+    :class="{'zoom': zoom, 'zoom-big': zoomBig}"
     viewBox="0 0 14 14"
     fill="none"
     style="user-select: none"
@@ -52,6 +55,7 @@
        :width="width"
        :height="height"
        :style="{margin: margin}"
+       :class="{'zoom': zoom, 'zoom-big': zoomBig}"
        viewBox="0 0 20 22"
        fill="none"
        style="user-select: none"
@@ -86,11 +90,43 @@ export default {
     margin: {
       type: String,
       default: '0'
+    },
+    zoom: {
+      type: Boolean,
+      default: true
+    },
+    zoomBig: {
+      type: Boolean,
+      default: false
     }
   }
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+.zoom {
+  -ms-transform: scale(1.00); /* IE 9 */
+  -webkit-transform: scale(1.00); /* Safari 3-8 */
+  transform: scale(1.00);
+  transition: 200ms ease-out;
+}
+.zoom:hover {
+  -ms-transform: scale(1.05); /* IE 9 */
+  -webkit-transform: scale(1.05); /* Safari 3-8 */
+  transform: scale(1.05);
+  transition: 200ms ease-out;
+}
 
+.zoom-big {
+  -ms-transform: scale(1.00); /* IE 9 */
+  -webkit-transform: scale(1.00); /* Safari 3-8 */
+  transform: scale(1.00);
+  transition: 200ms ease-out;
+}
+.zoom-big:hover {
+  -ms-transform: scale(1.1); /* IE 9 */
+  -webkit-transform: scale(1.1); /* Safari 3-8 */
+  transform: scale(1.1);
+  transition: 200ms ease-out;
+}
 </style>
