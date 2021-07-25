@@ -24,7 +24,7 @@ import text_item from "~/components/atoms/text_item";
 import appHeader from "~/components/appHeader";
 import appTitle from "~/components/appTitle";
 import appSidebar from "~/components/appSidebar";
-import basket from "@/components/basket";
+import basket from "@/components/organizms/basket";
 
 export default {
   components: {
@@ -33,6 +33,9 @@ export default {
     text_item,
     appSidebar,
     basket
+  },
+  mounted() {
+    this.$store.dispatch('basket/localStorageRequest')
   }
 }
 </script>

@@ -10,7 +10,8 @@
     'productName': productName,
     'productPrice': productPrice,
     'basketEmptyText': basketEmptyText,
-    'btnText': btnText
+    'btnText': btnText,
+    'basketOrderHeader': basketOrderHeader
     }"
     :style="{
     margin: margin
@@ -60,6 +61,10 @@ export default {
       default: false
     },
     btnText: {
+      type: Boolean,
+      default: false
+    },
+    basketOrderHeader: {
       type: Boolean,
       default: false
     },
@@ -136,5 +141,12 @@ export default {
   line-height: 21px;
   text-align: center;
   color: #FFFFFF;
+}
+.basketOrderHeader {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 23px;
+  color: #59606D;
 }
 </style>

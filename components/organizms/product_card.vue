@@ -3,68 +3,37 @@
     class="zoom"
     style="position: relative"
   >
-    <div
+    <cardButtons
       class="buttons"
-    >
-      <ratings
-        :rating="product.rating"
-      />
-      <vIcon
-        name="basket"
-        width="13px"
-        height="14px"
-        color="#959DAD"
-        style="cursor: pointer"
-      />
-    </div>
-
-    <div
+      :rating="product.rating"
+      :add-to-basket="addToBasket"
+      :product="product"
+      :is-in-basket-ids="isInBasketIds"
+    />
+    <cardBody
       class="card"
-    >
-      <product_photo
-        style="width: 90%"
-        :photo-link="'https://frontend-test.idaproject.com' + product.photo"
-        :alt="product.name"
-      />
-      <text_item
-        product-name
-        margin="0 0 6px 0"
-        style="align-self: start"
-      >
-        {{
-          product.name.toLowerCase().split(/\s+/).map(word => word[0].
-          toUpperCase() + word.substring(1)).join(' ') + ' ' + product.id
-        }}
-      </text_item>
-
-      <text_item
-        product-price
-        style="align-self: start"
-      >
-        {{ product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') }} &#8381;
-      </text_item>
-
-
-    </div>
+      :photo-link="'https://frontend-test.idaproject.com' + product.photo"
+      :price="product.price"
+      :product-id="product.id"
+      :product-name="product.name"
+    />
   </div>
 
 </template>
 
 <script>
-import product_photo from "@/components/atoms/product_photo";
-import text_item from "@/components/atoms/text_item";
-import ratings from "@/components/atoms/ratings";
-import vIcon from "@/components/atoms/vIcon";
+import cardButtons from "@/components/molecules/product_card/cardButtons";
+import cardBody from "@/components/molecules/product_card/cardBody";
 
 export default {
   components: {
-    product_photo,
-    text_item,
-    ratings,
-    vIcon
+    cardButtons,
+    cardBody
   },
   props: {
-    product: Object
+    product: Object,
+    addToBasket: Function,
+    isInBasketIds: Array
   }
 }
 </script>

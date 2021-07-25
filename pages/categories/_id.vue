@@ -9,6 +9,8 @@
         :key="product.id"
         class="product_card"
         :product="product"
+        :add-to-basket="addToBasket"
+        :is-in-basket-ids="isInBasketIds"
       />
     </div>
 
@@ -23,7 +25,7 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+import {mapGetters, mapActions} from 'vuex'
 import product_card from "@/components/organizms/product_card";
 import pagination from "@/components/molecules/pagination";
 
@@ -37,12 +39,20 @@ export default {
   components: {product_card, pagination},
   computed: {
     ...mapGetters('products', ['products']),
+    ...mapGetters('basket', ['basket_list']),
     ...mapGetters('pagination', ['current_page_arr', 'pageCount', 'pageNumber']),
+
+    isInBasketIds: function () {
+      let total_items = []
+      this.basket_list.map(item => total_items.push(item.id))
+      return total_items
+    }
   },
   methods: {
+    ...mapActions('basket', ['addToBasket']),
     paginatedData(obj) {
       this.$store.dispatch('pagination/paginatedData', obj)
-    }
+    },
   }
 }
 </script>
