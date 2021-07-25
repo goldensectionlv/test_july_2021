@@ -27,14 +27,16 @@
 <script>
 import {mapGetters, mapActions} from 'vuex'
 import product_card from "@/components/organizms/product_card";
-import pagination from "@/components/molecules/pagination";
+import pagination from "@/components/atoms/pagination";
 
 export default {
   async fetch({store, params}) {
     await store.dispatch('categories/get_categories', params.id)
-    await store.dispatch('products/get_products', params.id)
-    await store.dispatch('products/filter_by', store.getters['modal_filter/active_filter'])
-    await store.dispatch('pagination/paginatedData', {arr: store.getters['products/products'], pageNumber: 0})
+    if (Number(params.id) === Number(store.getters['categories/categories'][0].id)) {
+      await store.dispatch('products/get_products', params.id)
+      await store.dispatch('products/filter_by', store.getters['modal_filter/active_filter'])
+      await store.dispatch('pagination/paginatedData', {arr: store.getters['products/products'], pageNumber: 0})
+    }
   },
   components: {product_card, pagination},
   computed: {
@@ -53,6 +55,17 @@ export default {
     paginatedData(obj) {
       this.$store.dispatch('pagination/paginatedData', obj)
     },
+  },
+  async mounted() {
+    // В соответствии с заданием, другие страницы должны рендериться на стороне клиента
+    if (Number(this.$route.params.id) !== Number(this.$store.getters['categories/categories'][0].id)) {
+      await this.$store.dispatch('products/get_products', this.$route.params.id)
+      await this.$store.dispatch('products/filter_by', this.$store.getters['modal_filter/active_filter'])
+      await this.$store.dispatch('pagination/paginatedData', {
+        arr: this.$store.getters['products/products'],
+        pageNumber: 0
+      })
+    }
   }
 }
 </script>

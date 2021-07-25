@@ -6,7 +6,7 @@
     </text_item>
 
     <div class="basket"
-         @click="$store.dispatch('basket/switchBasket', true)"
+         @click="basketClick"
     >
       <div class="basket__counter"
       >
@@ -38,6 +38,11 @@ export default {
       let total = 0
       this.basket_list.map(item => total += item.quantity)
       return total
+    }
+  },
+  methods: {
+    basketClick() {
+      this.$store.dispatch('basket/switchBasket', true)
     }
   },
   components: {

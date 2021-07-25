@@ -4,7 +4,8 @@
     />
     <appHeader class="app-header"
     />
-    <div class="main-layout">
+    <div class="main-layout"
+    >
       <appTitle
         class="app-title"
       />

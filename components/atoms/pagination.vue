@@ -1,4 +1,3 @@
-
 <template>
   <div>
     <div
@@ -27,6 +26,7 @@ export default {
 .active-page {
   color: red;
 }
+
 .number-of-page-item {
   display: flex;
   align-items: center;
