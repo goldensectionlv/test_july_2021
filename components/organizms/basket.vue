@@ -101,9 +101,10 @@ export default {
     width: 460px;
     max-width: 100vw;
     height: 100%;
-    padding: 52px 48px 48px 48px;
+    padding: 52px 48px 120px 48px;
     background-color: white;
     overflow-y: scroll;
+
   }
 }
 
