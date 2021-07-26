@@ -82,7 +82,7 @@ export default {
 }
 
 .slide-enter-active {
-  transition: 300ms;
+  transition: 100ms;
 }
 
 .slide-enter {
