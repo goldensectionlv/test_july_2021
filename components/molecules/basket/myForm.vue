@@ -25,7 +25,7 @@
       <label for="phone"/>
       <input
         id="phone"
-        type="text"
+        inputmode="decimal"
         class="form-item"
         :class="{'invalid-input': $v.form.phone.$error}"
         v-model.trim.lazy="form.phone"
