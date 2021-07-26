@@ -1,34 +1,46 @@
 <template>
-  <div class="basket-container"
-       ref="basket-container"
-       v-show="basket_active"
+  <transition
+    name="fade"
   >
-    <div class="basket-container__main">
+    <div class="basket-container"
+         ref="basket-container"
+         v-show="basket_active"
+    >
 
-      <basketHeader
-        style="width: 100%"
-        :on-close="onClose"
-      />
-      <emptyBasketInfo
-        v-if="!basket_list.length && !isThanksActive"
-        margin="24px 0 0 0"
-        :on-close="onClose"
-      />
-      <notEmptyBasketBody
-        v-if="basket_list.length"
-        margin="24px 0 0 0"
-        :basket-items="basket_list"
-        :delete-from-basket="deleteFromBasket"
-      />
-      <myForm
-        v-if="basket_list.length"
-      />
-      <thanksForOrder
-        v-if="!basket_list.length && isThanksActive"
-      />
+      <transition
+        name="slide"
+      >
+        <div class="basket-container__main"
+             v-show="basket_active"
+        >
+
+          <basketHeader
+            style="width: 100%"
+            :on-close="onClose"
+          />
+          <emptyBasketInfo
+            v-if="!basket_list.length && !isThanksActive"
+            margin="24px 0 0 0"
+            :on-close="onClose"
+          />
+          <notEmptyBasketBody
+            v-if="basket_list.length"
+            margin="24px 0 0 0"
+            :basket-items="basket_list"
+            :delete-from-basket="deleteFromBasket"
+          />
+          <myForm
+            v-if="basket_list.length"
+          />
+          <thanksForOrder
+            v-if="!basket_list.length && isThanksActive"
+          />
+        </div>
+      </transition>
+
+
     </div>
-
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -93,5 +105,30 @@ export default {
     background-color: white;
     overflow-y: scroll;
   }
+}
+
+.slide-leave-active,
+.slide-enter-active {
+  transition: 300ms;
+}
+
+.slide-enter {
+  transform: translate(100%, 0);
+  opacity: 1;
+}
+
+.slide-leave-to {
+  transform: translate(100%, 0);
+  opacity: 1;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: 300ms;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

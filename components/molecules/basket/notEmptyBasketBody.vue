@@ -7,50 +7,52 @@
       Товары в корзине
     </text_item>
 
-    <div
-      class="basket-item"
-      v-for="(product, index) of basketItems"
-      :key="product.id"
-    >
-      <!-- Т.к. формат картинок отличается от того, что в макете,
-      то пришлось здесь изменить стили карточки, чтобы выглядело адекватно-->
-      <product_photo
-        style="width: 28%"
-        :photo-link="'https://frontend-test.idaproject.com' + product.photo"
-        :alt="product.name"
-      />
-      <!--      product information-->
-      <div class="product-info">
-        <text_item product-name>
-          {{
-            product.name.toLowerCase().split(/\s+/).map(word => word[0]
-              .toUpperCase() + word.substring(1)).join(' ') + ' Количество: ' + product.quantity
-          }}
-        </text_item>
-
-        <text_item
-          product-price
-          margin="6px 0 0 0"
-        >
-          {{ product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') }} &#8381;
-        </text_item>
-
-        <ratings
-          style="margin-top: 6px"
-          :rating="product.rating"
+    <transition-group name="itemsAnimation">
+      <div
+        class="basket-item"
+        v-for="(product, index) of basketItems"
+        :key="product.id"
+      >
+        <!-- Т.к. формат картинок отличается от того, что в макете,
+        то пришлось здесь изменить стили карточки, чтобы выглядело адекватно-->
+        <product_photo
+          style="width: 28%"
+          :photo-link="'https://frontend-test.idaproject.com' + product.photo"
+          :alt="product.name"
         />
+        <!--      product information-->
+        <div class="product-info">
+          <text_item product-name>
+            {{
+              product.name.toLowerCase().split(/\s+/).map(word => word[0]
+                .toUpperCase() + word.substring(1)).join(' ') + ' Количество: ' + product.quantity
+            }}
+          </text_item>
+
+          <text_item
+            product-price
+            margin="6px 0 0 0"
+          >
+            {{ product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') }} &#8381;
+          </text_item>
+
+          <ratings
+            style="margin-top: 6px"
+            :rating="product.rating"
+          />
+        </div>
+        <!--      delete button-->
+        <div style="margin-left: auto">
+          <vIcon
+            width="20px"
+            height="22px"
+            name="delete"
+            style="cursor: pointer"
+            @click.native="deleteFromBasket(index)"
+          />
+        </div>
       </div>
-      <!--      delete button-->
-      <div style="margin-left: auto">
-        <vIcon
-          width="20px"
-          height="22px"
-          name="delete"
-          style="cursor: pointer"
-          @click.native="deleteFromBasket(index)"
-        />
-      </div>
-    </div>
+    </transition-group>
   </div>
 </template>
 
@@ -94,4 +96,14 @@ export default {
   flex-direction: column;
 }
 
+.itemsAnimation-enter-active,
+.itemsAnimation-leave-active {
+  transition: all 300ms;
+}
+
+.itemsAnimation-enter,
+.itemsAnimation-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
 </style>

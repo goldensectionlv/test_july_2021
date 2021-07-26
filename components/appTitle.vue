@@ -4,6 +4,7 @@
       Каталог
     </text_item>
 
+
     <div class="filter"
          @click="open_or_close"
          @mouseleave="switchFilterModal(false)"
@@ -12,12 +13,18 @@
         class="filter__main"
         :active-filter="active_filter"
       />
-      <filterModal
-        v-if="filterModalActive"
-        class="filter__modal"
-      />
-
+      <transition
+        name="slide"
+        mode="out-in"
+        :key="filterModalActive"
+      >
+        <filterModal
+          v-if="filterModalActive"
+          class="filter__modal"
+        />
+      </transition>
     </div>
+
 
   </div>
 
@@ -66,13 +73,20 @@ export default {
     flex-direction: column;
     position: absolute;
     z-index: 1;
-    bottom: 0;
     padding: 12px;
-    transform: translateY(100%);
     border-radius: 8px;
     min-width: 100%;
     cursor: pointer;
     background-color: white;
   }
+}
+
+.slide-enter-active {
+  transition: 300ms;
+}
+
+.slide-enter {
+  transform: translate(0, 40%);
+  opacity: 1;
 }
 </style>
