@@ -30,12 +30,14 @@ export default {
 .sidebar-text {
   cursor: pointer;
   user-select: none;
+  color: #959DAD !important;
   margin-bottom: 16px !important;
   &:hover {
-    color: #959DAD;
+    color: #59606D !important;
   }
   &-active {
     text-decoration: underline;
+    color: black !important;
   }
 }
 </style>
