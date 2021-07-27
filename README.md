@@ -1,4 +1,8 @@
-# test_july_2021 https://nuxt-ida-app.herokuapp.com/ <-demo
+# test_july_2021 
+
+# https://nuxt-ida-app.herokuapp.com/ - result
+
+# https://frontend-test.idaproject.com/ - task
 
 ## Build Setup
 
