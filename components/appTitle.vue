@@ -73,7 +73,7 @@ export default {
     flex-direction: column;
     position: absolute;
     z-index: 1;
-    padding: 12px;
+    padding: 18px 12px 12px 12px;
     border-radius: 8px;
     min-width: 100%;
     cursor: pointer;
