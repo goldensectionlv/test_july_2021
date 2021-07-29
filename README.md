@@ -2,7 +2,6 @@
 
 # https://nuxt-ida-app.herokuapp.com/ - result
 
-# https://frontend-test.idaproject.com/ - task
 
 ## Build Setup
 
