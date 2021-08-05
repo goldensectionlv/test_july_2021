@@ -4,6 +4,7 @@
 
 # https://frontend-test.idaproject.com/old/ - task
 
+![схема](https://github.com/goldensectionlv/test_july_2021/raw/master/screenstore.png)
 
 ## Build Setup
 
